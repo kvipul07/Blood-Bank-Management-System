@@ -1,0 +1,120 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('images/2.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Styles */
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Header Styles */
+h1, h2 {
+    color: #333399; /* Red color for titles */
+}
+
+p {
+    font-style: italic;
+    color: #333399; /* Darker red for the quote */
+}
+
+/* Input and Select Styles */
+input, select {
+    padding: 8px;
+    margin: 10px 0;
+    width: 80%;
+    border: 1px solid #333399 /* Dark red border for inputs */
+    border-radius: 4px;
+    background-color: #F5F5F5; /* Light grey background */
+    color: #333; /* Dark text color for readability */
+    font-size: 16px;
+}
+
+/* Styling for the Blood Type Dropdown */
+select {
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    padding: 8px 12px;
+    margin: 10px 0;
+    width: 84%; /* Same width as other inputs */
+    border: 1px solid #333399; /* Dark red border */
+    border-radius: 4px;
+    background-color: #F5F5F5; /* Light grey background */
+    color: #333; /* Dark text color */
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    
+    /* Adding a custom down arrow */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Down_triangle.svg/1024px-Down_triangle.svg.png');
+    background-position: right 10px center; /* Position the arrow to the right */
+    background-repeat: no-repeat;
+    background-size: 12px; /* Adjust the size of the arrow */
+}
+
+/* Focus State for Input and Select Fields */
+input:focus, select:focus {
+    border-color: #D32F2F; /* Red border on focus */
+    background-color: #f1f1f1; /* Light background when focused */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    background: linear-gradient(120deg,#333399,#FF00CC);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+button:hover {
+    background: linear-gradient(120deg,#F2C0DD,#25092E);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 3px solid #25092E;
+}
+
+th {
+    background: linear-gradient(120deg,#333399,#FF00CC);
+    color: white;
+}
+
+/* Table Row Hover */
+tbody tr:hover {
+    background: #F2C0DD;
+}
+
+tbody td {
+    color: #000; /* Dark text color */
+    background: linear-gradient(120deg,#FFECAE,#F17141);
+}

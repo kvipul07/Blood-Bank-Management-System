@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Raktदान</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU7C2lqN6JRiRhRJtE614pzmjInbHiuSuGbw&s" alt="Raktदान Logo" id="logo" width="60" height="50">
+        </div>
+        <h1>Raktदान</h1>
+        <!-- <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="looking-for-blood.html">Looking for Blood</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Blood Bank Login</a></li>
+            </ul>
+        </nav> -->
+
+        <div class="nav-links" >
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: linear-gradient(120deg, #333399, #FF00CC);">
+                <div class="container-fluid">
+                  <!-- <a class="navbar-brand" href="index.html">Raktदान</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button> -->
+                  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="about-us.html">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="looking-for-blood.html">Looking for Blood</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="login.html">Blood Bank Login</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Dashboard</h2>
+        <p>This is the dashboard where you can monitor the total number of registered blood donors and track the status of blood donations. Here you can view reports and data on donation trends and hospital needs.</p>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Blood Donation Dashboard</h1>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h2>Total Blood Banks</h2>
+                <p id="totalBloodBanks">50</p>
+            </div>
+            <div class="stat-card">
+                <h2>Total Donors</h2>
+                <p id="totalDonors">1200</p>
+            </div>
+            <div class="stat-card">
+                <h2>Total Blood Units</h2>
+                <p id="totalBloodUnits">5000</p>
+            </div>
+        </section>
+
+        <section class="charts">
+            <div class="chart-card">
+                <h2>Blood Type Availability (2D Pie Chart)</h2>
+                <canvas id="bloodTypeChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Blood Type Availability (Doughnut Chart)</h2>
+                <canvas id="bloodTypeDoughnutChart"></canvas>
+            </div>
+        </section>
+
+        <section class="charts">
+            <div class="chart-card">
+                <h2>Blood Units Count (3D Column Histogram)</h2>
+                <div id="histogramChart" class="plotly-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h2>Blood Units Count (3D Bar Chart)</h2>
+                <div id="barChart" class="plotly-chart"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 2D Pie Chart - Blood Type Availability
+        const ctx1 = document.getElementById('bloodTypeChart').getContext('2d');
+        const bloodTypeChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-'],
+                datasets: [{
+                    label: 'Blood Type Availability',
+                    data: [250, 300, 150, 100, 50, 70, 30, 20],
+                    backgroundColor: ['#FF5733', '#FFB533', '#FF5733', '#33FF57', '#5733FF', '#FF33F6', '#F6F6F6', '#F4FF33'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Doughnut Chart - Blood Type Availability
+        const ctx2 = document.getElementById('bloodTypeDoughnutChart').getContext('2d');
+        const bloodTypeDoughnutChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-'],
+                datasets: [{
+                    label: 'Blood Type Availability',
+                    data: [250, 300, 150, 100, 50, 70, 30, 20],
+                    backgroundColor: ['#FF5733', '#FFB533', '#FF5733', '#33FF57', '#5733FF', '#FF33F6', '#F6F6F6', '#F4FF33'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // 3D Column Histogram (Plotly.js)
+        var trace1 = {
+            x: ['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-'],
+            y: [250, 300, 150, 100, 50, 70, 30, 20],
+            type: 'histogram',
+            marker: {color: '#FF5733'}
+        };
+        var data = [trace1];
+        var layout = {
+            title: 'Blood Units Count (3D Column)',
+            barmode: 'stack',
+            scene: {
+                xaxis: {title: 'Blood Type'},
+                yaxis: {title: 'Units'},
+                zaxis: {title: 'Count'}
+            }
+        };
+        Plotly.newPlot('histogramChart', data, layout);
+
+        // 3D Bar Chart (Plotly.js)
+        var trace2 = {
+            x: ['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-'],
+            y: [250, 300, 150, 100, 50, 70, 30, 20],
+            z: [200, 150, 100, 50, 30, 40, 10, 5],
+            type: 'bar3d',
+            marker: {color: '#33FF57'}
+        };
+        var data2 = [trace2];
+        var layout2 = {
+            title: 'Blood Units Count (3D Bar)',
+            scene: {
+                xaxis: {title: 'Blood Type'},
+                yaxis: {title: 'Units'},
+                zaxis: {title: 'Count'}
+            }
+        };
+        Plotly.newPlot('barChart', data2, layout2);
+    </script>
+
+    <footer>
+        <p>Contact Us: Email: contact@raktdaan.org | Phone: +123-456-7890</p>
+    </footer>
+</body>
+</html>

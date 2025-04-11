@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank</title>
+    <link rel="stylesheet" href="blood-bank.css">
+</head>
+<body>
+    <!-- Welcome Page -->
+    <div id="welcomePage" class="container">
+        <h1>Welcome to the Blood Bank</h1>
+        <p>"Saving lives, one drop at a time."</p>
+        <button onclick="showDonorPage()">I Want to Donate</button>
+        <button onclick="showReceiverPage()">I Need Blood</button>
+    </div>
+
+    <!-- Donor Page -->
+    <div id="donorPage" class="container" style="display:none;">
+        <h2>Donor Info</h2>
+        <input type="text" id="donorName" placeholder="Your Name" />
+        
+        <!-- Blood Type Dropdown -->
+        <select id="donorBloodType">
+            <option value="" disabled selected>Your Blood Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⮟</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+        
+        <input type="text" id="donorArea" placeholder="Your Area" />
+        
+        <!-- Contact field for 10 digit number -->
+        <input type="tel" id="donorContact" placeholder="Your Contact Details (10 digits)" pattern="\d{10}" maxlength="10" />
+
+        <button onclick="addDonor()">Add Donor</button>
+        <button onclick="goBackToWelcome()">Go Back</button>
+    </div>
+
+    <!-- Receiver Page -->
+    <div id="receiverPage" class="container" style="display:none;">
+        <h2>Search for Donors</h2>
+        <input type="text" id="receiverBloodType" placeholder="Blood Type (e.g. A+)" />
+        <input type="text" id="receiverArea" placeholder="Area (e.g. New York)" />
+        <button onclick="searchDonors()">Search Donors</button>
+        <button onclick="goBackToWelcome()">Go Back</button>
+
+        <h2>Available Donors:</h2>
+        <table id="donorsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Blood Type</th>
+                    <th>Area</th>
+                    <th>Contact</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Donor info will appear here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
